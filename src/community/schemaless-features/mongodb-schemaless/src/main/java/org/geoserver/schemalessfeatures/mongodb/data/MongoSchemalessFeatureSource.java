@@ -189,7 +189,7 @@ public class MongoSchemalessFeatureSource extends SchemalessFeatureSource {
         f = (Filter) f.accept(reprojectingFilterVisitor, null);
 
         SchemalessFilterToMongo v =
-                new SchemalessFilterToMongo((DynamicFeatureType) getSchema(), collection);
+                new SchemalessFilterToMongo(getSchema(), collection);
 
         return (DBObject) f.accept(v, null);
     }
@@ -199,8 +199,7 @@ public class MongoSchemalessFeatureSource extends SchemalessFeatureSource {
                 new MongoFilterSplitter(
                         getDataStore().getFilterCapabilities(),
                         null,
-                        null,
-                        new MongoCollectionMeta(getIndexesInfoMap())) {
+                        null) {
                     @Override
                     protected void visitBinaryComparisonOperator(BinaryComparisonOperator filter) {
                         Expression expression1 = filter.getExpression1();
@@ -217,19 +216,6 @@ public class MongoSchemalessFeatureSource extends SchemalessFeatureSource {
                 };
         f.accept(splitter, null);
         return new Filter[] {splitter.getFilterPre(), splitter.getFilterPost()};
-    }
-
-    private Map<String, String> getIndexesInfoMap() {
-        Map<String, String> indexes = new HashMap<>();
-        for (Document doc : collection.listIndexes()) {
-            Document key = (Document) doc.get("key");
-            if (key != null) {
-                for (Map.Entry indexData : key.entrySet()) {
-                    indexes.put(indexData.getKey().toString(), indexData.getValue().toString());
-                }
-            }
-        }
-        return indexes;
     }
 
     @Override
