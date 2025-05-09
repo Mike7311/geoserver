@@ -42,7 +42,7 @@ public class SchemaRulesTabPanel extends PublishedEditTabPanel<LayerInfo> {
         tablePanel.setOutputMarkupId(true);
         add(tablePanel);
         configurationPanel = new SchemaRuleConfigurationPanel(
-                "ruleConfiguration", new CompoundPropertyModel<>(new SchemaRule()), false, li);
+                "schemaRuleConfiguration", new CompoundPropertyModel<>(new SchemaRule()), false, li);
         configurationPanel.setTemplateRuleTablePanel(tablePanel);
         configurationPanel.setOutputMarkupId(true);
         tablePanel.setConfigurationPanel(configurationPanel);

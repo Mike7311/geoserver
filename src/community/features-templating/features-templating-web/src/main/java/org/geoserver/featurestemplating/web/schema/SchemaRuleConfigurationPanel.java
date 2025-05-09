@@ -62,7 +62,7 @@ public class SchemaRuleConfigurationPanel extends Panel {
     }
 
     private void initUI(CompoundPropertyModel<SchemaRule> model, boolean isUpdate) {
-        panelLabel = new Label("ruleConfigurationLabel", panelLabelModel = Model.of(getPanelLabelValue("add")));
+        panelLabel = new Label("schemaRuleConfigurationLabel", panelLabelModel = Model.of(getPanelLabelValue("add")));
         panelLabel.setOutputMarkupId(true);
         add(panelLabel);
         this.theForm = new Form<>("theForm", model);

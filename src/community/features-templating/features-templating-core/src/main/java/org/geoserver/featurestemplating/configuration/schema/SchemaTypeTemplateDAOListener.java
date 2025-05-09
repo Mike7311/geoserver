@@ -29,7 +29,7 @@ public class SchemaTypeTemplateDAOListener implements SchemaDAOListener {
             if (!rules.isEmpty()) {
                 if (rules.removeIf(r ->
                         r.getSchemaIdentifier().equals(deleteEvent.getSource().getIdentifier()))) {
-                    fti.getMetadata().put(TemplateLayerConfig.METADATA_KEY, layerConfig);
+                    fti.getMetadata().put(SchemaLayerConfig.METADATA_KEY, layerConfig);
                     saveFeatureTypeInfo();
                     updateCache(ti);
                 }
@@ -54,7 +54,7 @@ public class SchemaTypeTemplateDAOListener implements SchemaDAOListener {
                     rules.removeIf(tr -> tr.getSchemaIdentifier().equals(info.getIdentifier()));
                     rules.add(r);
                     layerConfig.setSchemaRules(rules);
-                    fti.getMetadata().put(TemplateLayerConfig.METADATA_KEY, layerConfig);
+                    fti.getMetadata().put(SchemaLayerConfig.METADATA_KEY, layerConfig);
                     saveFeatureTypeInfo();
                 }
             }

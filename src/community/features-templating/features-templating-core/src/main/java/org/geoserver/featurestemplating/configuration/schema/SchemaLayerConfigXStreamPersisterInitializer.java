@@ -12,9 +12,9 @@ public class SchemaLayerConfigXStreamPersisterInitializer implements XStreamPers
 
     @Override
     public void init(XStreamPersister persister) {
-        persister.getXStream().alias("Rule", SchemaRule.class);
+        persister.getXStream().alias("SchemaRule", SchemaRule.class);
         persister.getXStream().alias("SchemaLayerConfig", SchemaLayerConfig.class);
         persister.registerBreifMapComplexType("SchemaRuleType", SchemaRule.class);
-        persister.registerBreifMapComplexType("LayerConfigType", SchemaLayerConfig.class);
+        persister.registerBreifMapComplexType("SchemaLayerConfigType", SchemaLayerConfig.class);
     }
 }

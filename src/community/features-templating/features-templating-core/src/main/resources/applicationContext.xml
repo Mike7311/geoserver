@@ -28,7 +28,7 @@
         <constructor-arg ref="dataDirectory"/>
     </bean>
 
-    <bean id="schemaCLayerConfXMLPersister"
+    <bean id="schemaLayerConfXMLPersister"
           class="org.geoserver.featurestemplating.configuration.schema.SchemaLayerConfigXStreamPersisterInitializer" />
 
     <bean id="schemaDao" class="org.geoserver.featurestemplating.configuration.schema.SchemaInfoDAOImpl"/>

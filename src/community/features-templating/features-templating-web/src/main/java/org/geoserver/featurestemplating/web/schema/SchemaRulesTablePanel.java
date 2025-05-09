@@ -42,7 +42,10 @@ public class SchemaRulesTablePanel extends Panel {
 
         super(id);
         MapModel<SchemaLayerConfig> mapModelLayerConf = new MapModel<>(metadataModel, SchemaLayerConfig.METADATA_KEY);
-        if (mapModelLayerConf.getObject() == null) mapModelLayerConf.setObject(new SchemaLayerConfig());
+        Object object = mapModelLayerConf.getObject();
+        if (!(object instanceof SchemaLayerConfig)) {
+            mapModelLayerConf.setObject(new SchemaLayerConfig());
+        }
         this.model = LiveCollectionModel.set(new PropertyModel<Set<SchemaRule>>(mapModelLayerConf, "schemaRules"));
         GeoServerDataProvider<SchemaRule> dataProvider = new SchemaRuleProvider(model);
         table = new SchemaRuleTable("table", dataProvider, true);

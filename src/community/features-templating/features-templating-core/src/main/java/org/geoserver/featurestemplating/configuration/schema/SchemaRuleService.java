@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.Set;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
-import org.geoserver.featurestemplating.configuration.TemplateLayerConfig;
 import org.geoserver.platform.GeoServerExtensions;
 
 /** Class that provides methods to add, update or delete Template Rules */
@@ -38,7 +37,7 @@ public class SchemaRuleService {
             if (result) {
                 SchemaLayerConfig config = getSchemaLayerConfig();
                 config.setSchemaRules(rules);
-                featureTypeInfo.getMetadata().put(TemplateLayerConfig.METADATA_KEY, config);
+                featureTypeInfo.getMetadata().put(SchemaLayerConfig.METADATA_KEY, config);
                 getCatalog().save(featureTypeInfo);
             }
         }
@@ -57,7 +56,7 @@ public class SchemaRuleService {
                 Set<SchemaRule> ruleset = updatePriorities(new ArrayList<>(rules), rule);
                 SchemaLayerConfig config = getSchemaLayerConfig();
                 config.setSchemaRules(ruleset);
-                featureTypeInfo.getMetadata().put(TemplateLayerConfig.METADATA_KEY, config);
+                featureTypeInfo.getMetadata().put(SchemaLayerConfig.METADATA_KEY, config);
                 getCatalog().save(featureTypeInfo);
             }
         }
@@ -74,7 +73,7 @@ public class SchemaRuleService {
         Set<SchemaRule> rules = config.getSchemaRules();
         Set<SchemaRule> ruleset = updatePriorities(new ArrayList<>(rules), rule);
         config.setSchemaRules(ruleset);
-        featureTypeInfo.getMetadata().put(TemplateLayerConfig.METADATA_KEY, config);
+        featureTypeInfo.getMetadata().put(SchemaLayerConfig.METADATA_KEY, config);
         getCatalog().save(featureTypeInfo);
     }
 
