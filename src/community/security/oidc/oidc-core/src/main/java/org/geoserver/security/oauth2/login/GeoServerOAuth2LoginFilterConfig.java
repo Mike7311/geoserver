@@ -100,6 +100,7 @@ public class GeoServerOAuth2LoginFilterConfig extends PreAuthenticatedUserNameFi
     private boolean oidcEnforceTokenValidation = true;
     private boolean oidcUsePKCE = false;
     private boolean oidcAuthenticationMethodPostSecret = false;
+    private boolean disableSignatureValidation = false;
     /**
      * Add extra logging. NOTE: this might spill confidential information to the log - do not turn on in normal
      * operation!
@@ -356,6 +357,14 @@ public class GeoServerOAuth2LoginFilterConfig extends PreAuthenticatedUserNameFi
 
     public void setOidcAuthenticationMethodPostSecret(boolean sendClientSecret) {
         this.oidcAuthenticationMethodPostSecret = sendClientSecret;
+    }
+
+    public boolean isDisableSignatureValidation() {
+        return disableSignatureValidation;
+    }
+
+    public void setDisableSignatureValidation(boolean disableSignatureValidation) {
+        this.disableSignatureValidation = disableSignatureValidation;
     }
 
     public String getPostLogoutRedirectUri() {

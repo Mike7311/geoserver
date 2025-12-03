@@ -170,6 +170,7 @@ public class OAuth2LoginAuthProviderPanelTest extends AbstractSecurityNamedServi
 
         formTester.setValue(prefix + "displayOnOidc:oidcForceAuthorizationUriHttps", false);
         formTester.setValue(prefix + "displayOnOidc:oidcEnforceTokenValidation", false);
+        formTester.setValue(prefix + "displayOnOidc:disableSignatureValidation", true);
         formTester.setValue(prefix + "displayOnOidc:oidcUsePKCE", false);
         formTester.setValue(prefix + "displayOnOidc:oidcAllowUnSecureLogging", false);
         formTester.setValue(prefix + "displayOnOidc:oidcResponseMode", "");
@@ -192,6 +193,7 @@ public class OAuth2LoginAuthProviderPanelTest extends AbstractSecurityNamedServi
 
         assertFalse(lConfig.getOidcForceAuthorizationUriHttps());
         assertFalse(lConfig.isOidcEnforceTokenValidation());
+        assertTrue(lConfig.isDisableSignatureValidation());
         assertFalse(lConfig.isOidcUsePKCE());
         assertFalse(lConfig.isOidcAllowUnSecureLogging());
         assertNull(lConfig.getOidcResponseMode());
